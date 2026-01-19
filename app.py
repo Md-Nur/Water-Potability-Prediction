@@ -24,15 +24,15 @@ def predict_gpa(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organi
         return "Not Drinkable"
 
 inputs = [
-    gr.Slider(0, 14, step=0.1, label="pH"),
-    gr.Number(0, 1000, step=1, label="Hardness"),
-    gr.Number(0, 100000, step=1, label="Solids"),
-    gr.Slider(0, 100, step=0.5, label="Chloramines"),
-    gr.Number(0, 1000, step=1, label="Sulfate"),
-    gr.Number(0, 1000, step=1, label="Conductivity"),
-    gr.Slider(0, 4, step=0.1, label="Organic_carbon"),
-    gr.Number(0, 1000, step=1, label="Trihalomethanes"),
-    gr.Number(0, 1000, step=1, label="Turbidity"),
+    gr.Slider(3.8, 10.3, step=0.1, label="pH"),
+    gr.Slider(117, 277, step=1, label="Hardness"),
+    gr.Slider(320, 44832, step=1, label="Solids"),
+    gr.Slider(3.1, 11.1, step=0.1, label="Chloramines"),
+    gr.Slider(267, 401, step=1, label="Sulfate"),
+    gr.Slider(191, 656, step=1, label="Conductivity"),
+    gr.Slider(5.5, 23.5, step=0.5, label="Organic_carbon"),
+    gr.Slider(26.5, 107, step=0.5, label="Trihalomethanes"),
+    gr.Slider(1.8, 6.1, step=0.1, label="Turbidity"),
 ]
 
 app = gr.Interface(
