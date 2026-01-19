@@ -2,7 +2,6 @@ import gradio as gr
 import pandas as pd
 import pickle
 from is_the_water_drinkable import capping
-import numpy as np
 
 with open("water_model.pkl", "rb") as f:
     model = pickle.load(f)

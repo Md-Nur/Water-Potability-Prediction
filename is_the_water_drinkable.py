@@ -2,10 +2,10 @@ import numpy as np
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import FunctionTransformer
+from sklearn.preprocessing import FunctionTransformer, StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split,RandomizedSearchCV
-from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, precision_score, recall_score, classification_report
 
 df = pd.read_csv("./water_potability.csv")
 
@@ -45,10 +45,10 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 param_dist = {
-    'model__n_estimators': range(50, 501),
-    'model__max_depth': range(3, 11),
-    'model__max_features': range(1,10),
-    'model__min_samples_leaf': range(1,6),
+    'model__n_estimators': range(50, 400),
+    'model__max_depth': range(3, 31),
+    'model__max_features': range(2,13),
+    'model__min_samples_leaf': range(2,9),
 }
 
 random_search = RandomizedSearchCV(
@@ -65,7 +65,6 @@ print(f"Best Score: {random_result.best_score_:.2f}")
 
 best_model = random_result.best_estimator_
 
-from sklearn.metrics import accuracy_score, precision_score, recall_score, classification_report
 bestPred = best_model.predict(X_test)
 print(f"Score: {accuracy_score(y_test, bestPred):.2f}")
 print(f"Precison: {precision_score(y_test, bestPred):.2f}")
